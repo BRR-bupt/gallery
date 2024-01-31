@@ -1,0 +1,38 @@
+/* html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+} */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /* font-size: 14px;
+  font-weight: normal; */
+}
+
+/* html.dark {
+  background: #121212;
+}
+
+.dark body {
+  color: white;
+  background-color: #121212;
+} */
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+#wrapper {
+  overflow-y: hidden !important;
+}
