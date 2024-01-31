@@ -19,6 +19,6 @@ export const routeStore = defineStore('page-store', {
 export const dataStore = defineStore('data-store', {
   // other options...
   state: () => ({
-    data: ref<[string, ImageInfo[]][]>([])
+    data: ref<[string, ImageInfo[]][]>([]),
   }),
 })

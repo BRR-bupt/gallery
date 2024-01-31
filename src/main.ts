@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import './style.css'
 import { createPinia } from 'pinia'
-import { createWebHistory, createWebHashHistory } from 'vue-router'
+import { createWebHashHistory } from 'vue-router'
 import MasonryWall from '@yeger/vue-masonry-wall'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'

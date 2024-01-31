@@ -8,9 +8,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     ArrowButton: typeof import('./components/ArrowButton.vue')['default']
-    FAQ: typeof import('./components/FAQ.vue')['default']
     Footer: typeof import('./components/Footer.vue')['default']
-    HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     MyHeader: typeof import('./components/MyHeader.vue')['default']
     Preload: typeof import('./components/Preload.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

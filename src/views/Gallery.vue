@@ -1,7 +1,8 @@
 <script setup lang='ts'>
 import ScrollTrigger from 'gsap/ScrollTrigger'
-import { ImageInfo, routeStore, dataStore } from '~/store/piniaStore'
 import gsap from 'gsap'
+import type { ImageInfo } from '~/store/piniaStore'
+import { dataStore, routeStore } from '~/store/piniaStore'
 import { catalog } from '~/assets/data/catalog'
 
 const isRoute = routeStore()
@@ -42,7 +43,6 @@ onMounted(() => {
   gsapMove()
 })
 
-
 function lookMore() {
   // imageNumber.value += 10
   // ScrollSmoother.get().kill()
@@ -69,19 +69,16 @@ function lookMore() {
   // })
 }
 
-
-
 function changeAlbum(album: string) {
-  if (activeAlbum.value === album) {
+  if (activeAlbum.value === album)
     return
-  }
+
   activeAlbum.value = album
   isData.data.forEach((el) => {
     if (el[0] === activeAlbum.value) {
-      if (ScrollSmoother.get()) {
+      if (ScrollSmoother.get())
         ScrollSmoother.get().kill()
-      }
-      
+
       imageNumber.value = 20
       maxImageNumber.value = el[1].length
       testData.value = el[1].slice(0, imageNumber.value)
@@ -123,7 +120,7 @@ function gsapMove() {
         duration: 1.4,
         ease: 'power4.out',
       },
-      '<'
+      '<',
     )
     .from(
       '#album-title > div',
@@ -132,7 +129,7 @@ function gsapMove() {
         duration: 1.4,
         ease: 'power4.out',
       },
-      '<'
+      '<',
     )
     .from(
       '#describ',
@@ -142,46 +139,54 @@ function gsapMove() {
         duration: 2,
         // ease: 'power4.out',
       },
-      '<'
+      '<',
     )
 }
-
 </script>
 
 <template>
   <div id="wrapper" class="overflow-hidden">
     <div id="content">
-      <div id="gridgalerie"
-        class="z-0 mx-auto grid min-h-screen w-full max-w-[3600px] grid-cols-1 [--initsize:_32px] sm:grid-cols-[30%_70%] md:grid-cols-[25%_75%] xl:grid-cols-[22.5%_77.5%] 2xl:grid-cols-[20%_80%] lt:md:[--initsize:_4.5vw] lt:xl:[--initsize:_54px]">
+      <div
+        id="gridgalerie"
+        class="z-0 mx-auto grid min-h-screen w-full max-w-[3600px] grid-cols-1 [--initsize:_32px] sm:grid-cols-[30%_70%] md:grid-cols-[25%_75%] xl:grid-cols-[22.5%_77.5%] 2xl:grid-cols-[20%_80%] lt:md:[--initsize:_4.5vw] lt:xl:[--initsize:_54px]"
+      >
         <div id="gridgalerie_cell1" class="relative h-[420px] sm:z-[2] sm:h-screen">
           <div id="title-galerie-container" class="absolute right-[5vw] top-[15vh] min-h-[320px] sm:top-[15vh]">
-            <div id="header-content"
-              class="ml-[20%] grid cursor-vertical-text gap-2 leading-none [writing-mode:vertical-rl]">
+            <div
+              id="header-content"
+              class="ml-[20%] grid cursor-vertical-text gap-2 leading-none [writing-mode:vertical-rl]"
+            >
               <div class="baron overflow-hidden text-[calc(var(--initsize))]">
                 <div>photographies</div>
               </div>
               <div
-                class="overflow-hidden text-[calc(var(--initsize)_*_2_/_3)] font-thin text-dark-lavender dark:text-dark-orange">
+                class="overflow-hidden text-[calc(var(--initsize)_*_2_/_3)] font-thin text-dark-lavender dark:text-dark-orange"
+              >
                 <div>BAO RUIRUI</div>
               </div>
             </div>
-
           </div>
           <div class="pt-[15vh] pl-6 font-mono">
             <div id="album-title" class="baron overflow-hidden text-xl mb-4 leading-6 text-gray dark:text-white">
               <div>Albums</div>
             </div>
             <div id="album-list" class="text-2xl text-grey">
-              <div v-for="(item, index) in catalog" :key="index" class="overflow-hidden cursor-pointer hover:text-jet"
-                @click="changeAlbum(item.en)">
-                <div :class="item.en === activeAlbum ? 'activeAlbum' : ''">/ {{ item.zh }}</div>
+              <div
+                v-for="(item, index) in catalog" :key="index" class="overflow-hidden cursor-pointer hover:text-jet"
+                @click="changeAlbum(item.en)"
+              >
+                <div :class="item.en === activeAlbum ? 'activeAlbum' : ''">
+                  / {{ item.zh }}
+                </div>
               </div>
             </div>
-
           </div>
 
           <div id="describ" class="absolute bottom-10 left-6 pt-2 pr-10 border-t font-mono">
-            <div class="text-2xl mb-2 font-bold">摄影记录</div>
+            <div class="text-2xl mb-2 font-bold">
+              摄影记录
+            </div>
             <div>摄影是一门光的艺术!</div>
             <div>私以为摄影要素:</div>
             <div class="mt-2">
@@ -189,12 +194,13 @@ function gsapMove() {
               <div>- 走出门，去发现</div>
               <div>- 按下快门</div>
             </div>
-
           </div>
         </div>
 
-        <div id="gridgalerie_cell2"
-          class="z-[3] bg-white h-min transition-bg-color duration-500 ease-[ease] dark:bg-jet sm:z-0 sm:pl-6 sm:pt-[15vh] it:pt-[15vh] av:sm:pt-[15vh]">
+        <div
+          id="gridgalerie_cell2"
+          class="z-[3] bg-white h-min transition-bg-color duration-500 ease-[ease] dark:bg-jet sm:z-0 sm:pl-6 sm:pt-[15vh] it:pt-[15vh] av:sm:pt-[15vh]"
+        >
           <!-- <div v-for="(folder, i) in list" :key="i"> -->
           <!-- <div>{{ folder[0] }}</div> -->
           <masonry-wall :items="testData" :ssr-columns="1" :column-width="400" :gap="16">
@@ -205,16 +211,16 @@ function gsapMove() {
           <!-- </div> -->
 
           <div class="mx-auto mt-2 w-auto max-w-[220px]">
-            <button @click="lookMore" v-show="imageNumber < maxImageNumber" id="see-more"
-              class="button flex w-full cursor-pointer justify-center p-2 disabled:pointer-events-none disabled:bg-light-lavender dark:disabled:pointer-events-none dark:disabled:bg-light-orange">
+            <button
+              v-show="imageNumber < maxImageNumber" id="see-more" class="button flex w-full cursor-pointer justify-center p-2 disabled:pointer-events-none disabled:bg-light-lavender dark:disabled:pointer-events-none dark:disabled:bg-light-orange"
+              @click="lookMore"
+            >
               更多
             </button>
           </div>
 
           <Footer class="sm:pr-6" />
         </div>
-
-
       </div>
     </div>
   </div>

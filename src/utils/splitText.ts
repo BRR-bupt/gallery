@@ -1,3 +1,5 @@
+/* eslint-disable eqeqeq */
+/* eslint-disable no-prototype-builtins */
 interface SplitTextOptions {
   words?: number
   chars?: number

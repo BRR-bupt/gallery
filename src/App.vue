@@ -6,8 +6,9 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import MyHeader from './components/MyHeader.vue'
 import Preload from './components/Preload.vue'
+import type { ImageInfo } from './store/piniaStore'
+import { dataStore, routeStore } from './store/piniaStore'
 import { all } from '~/assets/data/all'
-import { ImageInfo, routeStore, dataStore } from './store/piniaStore'
 const isRoute = routeStore()
 const isData = dataStore()
 
@@ -89,8 +90,6 @@ const end1 = 'M 0 100 V 0 Q 50 0 100 0 V 100 z'
 const init2 = 'M 0 0 V 100 Q 50 100 100 100 V 0 z'
 const start2 = 'M 0 0 V 50 Q 50 0 100 50 V 0 z'
 const end2 = 'M 0 0 V 0 Q 50 0 100 0 V 0 z'
-
-
 
 const onBeforeLeave = (_el: Element) => {
   console.log('onBeleave')
@@ -248,11 +247,12 @@ const onAfterEnter = (_el: Element) => {
 
   <MyHeader />
 
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" :class="{ hidden: waveHidden }"
-    class="pointer-events-none fixed left-0 top-0 z-[1000] h-full w-full fill-light-lavender dark:fill-light-orange">
+  <svg
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" :class="{ hidden: waveHidden }"
+    class="pointer-events-none fixed left-0 top-0 z-[1000] h-full w-full fill-light-lavender dark:fill-light-orange"
+  >
     <path id="quadbz" vector-effect="non-scaling-stroke" d="M 0 100 V 100 Q 50 100 100 100 V 100 z" />
   </svg>
-
 
   <router-view v-slot="{ Component }">
     <Transition mode="out-in" @before-leave="onBeforeLeave" @leave="onLeave" @enter="onEnter" @after-enter="onAfterEnter">

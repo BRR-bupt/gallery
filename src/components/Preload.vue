@@ -47,7 +47,7 @@ onMounted(() => {
         emits('preCompeted')
         console.log('preCompeted')
         isRoute.isNewPage++
-      }
+      },
     }, '<')
     // .fromTo(
     //   '#logoBO',
