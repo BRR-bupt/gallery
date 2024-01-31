@@ -42,14 +42,6 @@ onMounted(() => {
     ignoreMobileResize: true,
     // onUpdate: (self) => console.log("velocity:", self.getVelocity()),
   })
-  // Hello section
-  // const aboutLinesChild = new SplitText('#about_block', {
-  //   type: 'lines',
-  // })
-  // const aboutLinesParent = new SplitText('#about_block', {
-  //   type: 'lines',
-  //   linesClass: 'overflow-hidden',
-  // })
   const ellipseBigCircle = document.querySelector(
     '#big-circle ellipse',
   ) as SVGEllipseElement
@@ -162,15 +154,6 @@ onMounted(() => {
   //   drawSVG: '100% 100%',
   // })
 
-  // // Caracteristics section
-  // const aboutblockTextChild = new SplitText('#description span', {
-  //   type: 'lines',
-  // })
-  // // eslint-disable-next-line no-unused-vars, unused-imports/no-unused-vars
-  // const aboutblockTextParent = new SplitText('#description span', {
-  //   type: 'lines',
-  //   linesClass: 'overflow-hidden',
-  // })
   const mm = gsap.matchMedia()
   // const skewSetter = gsap.quickTo('#grained', 'skewY')
   const clamp = gsap.utils.clamp(-6, 6)

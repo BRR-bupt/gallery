@@ -144,9 +144,6 @@ function gsapMove() {
   const filters = document.querySelectorAll(
     '.filters-group-container > * > div',
   )
-  // const titlegalerie = new SplitText('#header-content > div', {
-  //   type: 'words',
-  // })
 
   const tl1 = gsap.timeline().pause()
   isRoute.$subscribe(() => {

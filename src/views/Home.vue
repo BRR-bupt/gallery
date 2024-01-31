@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { routeStore } from '~/store/piniaStore'
-import { SplitText, SplitTextSplit } from '../utils/SplitText'
+import { SplitText } from '../utils/SplitText'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import Footer from '~/components/Footer.vue'
