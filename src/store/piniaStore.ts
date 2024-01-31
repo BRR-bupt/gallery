@@ -16,13 +16,6 @@ export const routeStore = defineStore('page-store', {
   }),
 })
 
-export const dataReadyStore = defineStore('data-ready-store', {
-  // other options...
-  state: () => ({
-    isReady: false,
-  }),
-})
-
 export const dataStore = defineStore('data-store', {
   // other options...
   state: () => ({

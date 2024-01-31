@@ -426,7 +426,7 @@ function toGallery() {
             <img src="../assets/img/3.webp" class="img-unit" />
           </div>
           <div class="carousel-cell img-v z-[1] col-start-1 col-end-12 mt-[5vw] sm:col-end-6 sm:mt-[-15vw]">
-            <img src="https://ik.imagekit.io/buptbrr/quality/IMG_1613.JPG?updatedAt=1706624080734" class="img-unit" />
+            <img src="../assets/img/10.webp" class="img-unit" />
           </div>
           <div class="carousel-cell img-h col-start-1 col-end-12 mt-[5vw] sm:col-start-5 sm:mt-[-15vw]">
             <img src="../assets/img/1.webp" class="img-unit" />

@@ -1,12 +1,10 @@
 <script setup lang='ts'>
-import axios from 'axios'
 import ScrollTrigger from 'gsap/ScrollTrigger'
-import { ImageInfo, routeStore, dataReadyStore, dataStore } from '~/store/piniaStore'
+import { ImageInfo, routeStore, dataStore } from '~/store/piniaStore'
 import gsap from 'gsap'
 import { catalog } from '~/assets/data/catalog'
 
 const isRoute = routeStore()
-const isDataReady = dataReadyStore()
 const isData = dataStore()
 
 const defaultAlbum = 'quality'
@@ -14,53 +12,9 @@ const activeAlbum = ref('')
 const imageNumber = ref(20)
 const maxImageNumber = ref(100)
 
-// const list = ref<[string, ImageInfo[]][]>([])
 const testData = ref<ImageInfo[]>([])
-// const patt = /\/.*\//
-// const url = import.meta.env.MODE === 'development' ? 'api/v1/files' : 'https://api.imagekit.io/v1/files'
-// axios.get(url, {
-//   headers: { Authorization: 'Basic cHJpdmF0ZV9YbnJhOVYyVG5LYjFIU0dCSmpCWXlqOUdxMVE9OjIwMDA0MzA=' },
-// }).then((res) => {
-//   console.log('axios get')
-//   res.data.forEach((el: ImageInfo & { tags: null | string[] }) => {
-//     if (el.tags && el.tags.includes('trans')) {
-//       const temp = el.height
-//       el.height = el.width
-//       el.width = temp
-//     }
-//     if (patt.test(el.filePath)) {
-//       const folder = patt.exec(el.filePath)![0]
-//       const folderFix = folder.slice(1, folder.length - 1)
-//       const info: ImageInfo = {
-//         name: el.name,
-//         filePath: el.filePath,
-//         height: el.height,
-//         width: el.width,
-//         url: el.url,
-//         fixUrl: `${el.url}?tr=w-720,h-${720 * el.height / el.width}`,
-//       }
-//       let find = false
-//       list.value.forEach((list) => {
-//         if (list[0] === folderFix) {
-//           find = true
-//           list[1].push(info)
-//         }
-//       })
-//       if (!find)
-//         list.value.push([folderFix, [info]])
-//     }
-//   })
-//   console.log(list.value)
-//   changeAlbum(defaultAlbum)
-// })
 
-if (isDataReady.isReady === true) {
-  changeAlbum(defaultAlbum)
-} else {
-  isDataReady.$subscribe(()=>{
-    changeAlbum(defaultAlbum)
-  })
-}
+changeAlbum(defaultAlbum)
 
 onMounted(() => {
   ScrollSmoother.create({
@@ -124,7 +78,10 @@ function changeAlbum(album: string) {
   activeAlbum.value = album
   isData.data.forEach((el) => {
     if (el[0] === activeAlbum.value) {
-      ScrollSmoother.get().kill()
+      if (ScrollSmoother.get()) {
+        ScrollSmoother.get().kill()
+      }
+      
       imageNumber.value = 20
       maxImageNumber.value = el[1].length
       testData.value = el[1].slice(0, imageNumber.value)

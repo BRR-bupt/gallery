@@ -6,51 +6,82 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import MyHeader from './components/MyHeader.vue'
 import Preload from './components/Preload.vue'
-import { ImageInfo, routeStore, dataReadyStore, dataStore } from './store/piniaStore'
+import { all } from '~/assets/data/all'
+import { ImageInfo, routeStore, dataStore } from './store/piniaStore'
 const isRoute = routeStore()
-const isDataReady = dataReadyStore()
 const isData = dataStore()
 
 const list = ref<[string, ImageInfo[]][]>([])
 const patt = /\/.*\//
 const url = import.meta.env.MODE === 'development' ? 'api/v1/files' : 'https://api.imagekit.io/v1/files'
-axios.get(url, {
-  headers: { Authorization: 'Basic cHJpdmF0ZV9YbnJhOVYyVG5LYjFIU0dCSmpCWXlqOUdxMVE9OjIwMDA0MzA=' },
-}).then((res) => {
-  console.log('axios get ------------- 只一次')
-  res.data.forEach((el: ImageInfo & { tags: null | string[] }) => {
-    if (el.tags && el.tags.includes('trans')) {
-      const temp = el.height
-      el.height = el.width
-      el.width = temp
+// axios.get(url, {
+//   headers: { Authorization: 'Basic cHJpdmF0ZV9YbnJhOVYyVG5LYjFIU0dCSmpCWXlqOUdxMVE9OjIwMDA0MzA=' },
+// }).then((res) => {
+//   console.log('axios get ------------- 只一次')
+//   res.data.forEach((el: ImageInfo & { tags: null | string[] }) => {
+//     if (el.tags && el.tags.includes('trans')) {
+//       const temp = el.height
+//       el.height = el.width
+//       el.width = temp
+//     }
+//     if (patt.test(el.filePath)) {
+//       const folder = patt.exec(el.filePath)![0]
+//       const folderFix = folder.slice(1, folder.length - 1)
+//       const info: ImageInfo = {
+//         name: el.name,
+//         filePath: el.filePath,
+//         height: el.height,
+//         width: el.width,
+//         url: el.url,
+//         fixUrl: `${el.url}?tr=w-720,h-${720 * el.height / el.width}`,
+//       }
+//       let find = false
+//       list.value.forEach((list) => {
+//         if (list[0] === folderFix) {
+//           find = true
+//           list[1].push(info)
+//         }
+//       })
+//       if (!find)
+//         list.value.push([folderFix, [info]])
+//     }
+//   })
+//   console.log(list.value)
+//   isDataReady.isReady = true
+//   isData.data = list.value
+//   // changeAlbum(defaultAlbum)
+// })
+
+all.forEach((el: ImageInfo & { tags: null | string[] } & any) => {
+  if (el.tags && el.tags.includes('trans')) {
+    const temp = el.height
+    el.height = el.width
+    el.width = temp
+  }
+  if (patt.test(el.filePath)) {
+    const folder = patt.exec(el.filePath)![0]
+    const folderFix = folder.slice(1, folder.length - 1)
+    const info: ImageInfo = {
+      name: el.name,
+      filePath: el.filePath,
+      height: el.height,
+      width: el.width,
+      url: el.url,
+      fixUrl: `${el.url}?tr=w-720,h-${720 * el.height / el.width}`,
     }
-    if (patt.test(el.filePath)) {
-      const folder = patt.exec(el.filePath)![0]
-      const folderFix = folder.slice(1, folder.length - 1)
-      const info: ImageInfo = {
-        name: el.name,
-        filePath: el.filePath,
-        height: el.height,
-        width: el.width,
-        url: el.url,
-        fixUrl: `${el.url}?tr=w-720,h-${720 * el.height / el.width}`,
+    let find = false
+    list.value.forEach((list) => {
+      if (list[0] === folderFix) {
+        find = true
+        list[1].push(info)
       }
-      let find = false
-      list.value.forEach((list) => {
-        if (list[0] === folderFix) {
-          find = true
-          list[1].push(info)
-        }
-      })
-      if (!find)
-        list.value.push([folderFix, [info]])
-    }
-  })
-  console.log(list.value)
-  isDataReady.isReady = true
-  isData.data = list.value
-  // changeAlbum(defaultAlbum)
+    })
+    if (!find)
+      list.value.push([folderFix, [info]])
+  }
 })
+console.log(list.value)
+isData.data = list.value
 
 const init1 = 'M 0 100 V 100 Q 50 100 100 100 V 100 z'
 const start1 = 'M 0 100 V 50 Q 50 0 100 50 V 100 z'
