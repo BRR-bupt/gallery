@@ -155,7 +155,7 @@ function gsapMove() {
           <div id="title-galerie-container" class="absolute right-[5vw] top-[15vh] min-h-[320px] sm:top-[15vh]">
             <div
               id="header-content"
-              class="md:ml-[20%] grid cursor-vertical-text gap-2 leading-none [writing-mode:vertical-rl]"
+              class="ml-[-150px] md:ml-[20%] grid cursor-vertical-text gap-2 leading-none [writing-mode:vertical-rl]"
             >
               <div class="baron overflow-hidden text-[calc(var(--initsize))]">
                 <div>photographies</div>
