@@ -18,13 +18,16 @@ const testData = ref<ImageInfo[]>([])
 changeAlbum(defaultAlbum)
 
 onMounted(() => {
-  ScrollSmoother.create({
-    wrapper: '#wrapper',
-    content: '#content',
-    smooth: 2,
-    effects: true,
-    ignoreMobileResize: true,
-  })
+  if (window.screen.width > 800) {
+    ScrollSmoother.create({
+      wrapper: '#wrapper',
+      content: '#content',
+      smooth: 2,
+      effects: true,
+      ignoreMobileResize: true,
+    })
+  }
+
   document
     .querySelectorAll<HTMLElement>(
       '#gridgalerie_cell1',
@@ -44,8 +47,15 @@ onMounted(() => {
 })
 
 function lookMore() {
-  // imageNumber.value += 10
-  // ScrollSmoother.get().kill()
+  if (window.screen.width < 800) {
+    isData.data.forEach((el) => {
+      if (el[0] === activeAlbum.value) {
+        imageNumber.value += 20
+        testData.value = el[1].slice(0, imageNumber.value)
+      }
+    })
+    return
+  }
   isData.data.forEach((el) => {
     if (el[0] === activeAlbum.value) {
       ScrollSmoother.get().kill()
@@ -60,13 +70,6 @@ function lookMore() {
       })
     }
   })
-  // ScrollSmoother.create({
-  //   wrapper: '#wrapper',
-  //   content: '#content',
-  //   smooth: 2,
-  //   effects: true,
-  //   ignoreMobileResize: true,
-  // })
 }
 
 function changeAlbum(album: string) {
@@ -74,6 +77,18 @@ function changeAlbum(album: string) {
     return
 
   activeAlbum.value = album
+
+  if (window.screen.width < 800) {
+    isData.data.forEach((el) => {
+      if (el[0] === activeAlbum.value) {
+        imageNumber.value = 20
+        maxImageNumber.value = el[1].length
+        testData.value = el[1].slice(0, imageNumber.value)
+        window.scrollTo(0, 0)
+      }
+    })
+    return
+  }
   isData.data.forEach((el) => {
     if (el[0] === activeAlbum.value) {
       if (ScrollSmoother.get())
