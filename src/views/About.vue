@@ -300,7 +300,7 @@ onMounted(() => {
           </div>
         </div>
 
-        <div class="grid grid-cols-4 gap-4 mt-4 font-mono">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4 font-mono">
           <div v-for="(item, index) in connetion" :key="index" class="shadow">
             <div class="h-[150px] flex items-center justify-center" :style="{ 'background-color': `${item.color}` }">
               <div class="overflow-hidden">

@@ -227,7 +227,6 @@ onMounted(() => {
       scrollTrigger: {
         trigger: '#carousel-title',
         start: 'top 75%',
-        end: 'top 75%',
         toggleActions: 'play none none reverse',
       },
     })
@@ -261,7 +260,6 @@ onMounted(() => {
       scrollTrigger: {
         trigger: '#connect',
         start: 'top 75%',
-        end: 'top 75%',
         toggleActions: 'play none none reverse',
       },
     })
@@ -291,6 +289,9 @@ const router = useRouter()
 function toGallery() {
   router.push('/gallery')
 }
+
+console.log(window.screen.width)
+const width = window.screen.width
 </script>
 
 <template>
@@ -368,9 +369,9 @@ function toGallery() {
         >
           <button
             aria-label="Affichage du Formulaire de contact"
-            class="to-form button h-full min-h-[40px] w-[65%] max-w-[300px] rounded-full"
+            class="to-form font-bold button h-full min-h-[40px] w-[65%] max-w-[300px] rounded-full"
           >
-            <span>Réserver un shooting !</span>
+            <span>联 系 我 !</span>
           </button>
         </div>
       </div>
@@ -383,10 +384,12 @@ function toGallery() {
               class="mx-auto w-full items-end text-center text-[24.544px] font-extralight md:text-[3.2vw] 2xl:text-[53.76px]"
             >
               <span id="char-about" ref="refcharAbout" aria-hidden="true" class="inline-block cursor-text">
-                <!-- <span>For&nbsp;me</span><span>,&nbsp;photography</span>&nbsp;represents&nbsp;real&nbsp;life&nbsp;and&nbsp;our&nbsp;emotions -->
-                <!-- Pour&nbsp;moi,&#160;<b>la photographie</b>&#160;représente le moyen de
-              matérialiser nos&#160;<b>souvenirs</b>&#160;et&#160;nos&#160;<b>émotions vécues</b> -->
-                <span>摄影捕捉了真实的生活和我们的情感</span>
+                <span v-if="width > 1000">摄影捕捉了真实的生活和我们的情感</span>
+                <template v-else>
+                  <span>摄影捕捉了真实的生活</span>
+                  <span>和我们的情感</span>
+                </template>
+
                 <span>每一份感动都被记录</span>
               </span>
             </div>
@@ -487,7 +490,7 @@ function toGallery() {
           </div>
         </div>
 
-        <div class="grid grid-cols-4 gap-4 mt-4 font-mono">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4 font-mono">
           <div v-for="(item, index) in connetion" :key="index" class="shadow">
             <div class="h-[150px] flex items-center justify-center" :style="{ 'background-color': `${item.color}` }">
               <div class="overflow-hidden">

@@ -1,11 +1,13 @@
 <script setup lang='ts'>
 import { toggleDark } from '~/composables'
+const route = useRoute()
+console.log(route)
 </script>
 
 <template>
   <div id="my-header" class="z-10">
     <div style="cursor: default; display: flex; align-items: center;">
-      PHOTOGRAPHE
+      PHOTO
     </div>
     <div class="flex gap-6 justify-center items-center">
       <div @click="toggleDark()">
@@ -32,17 +34,17 @@ import { toggleDark } from '~/composables'
           </div>
         </button>
       </div>
-      <div>
+      <div v-if="route.path !== '/'">
         <router-link to="/">
           主页
         </router-link>
       </div>
-      <div>
+      <div v-if="route.path !== '/gallery'">
         <router-link to="/gallery">
           摄影集
         </router-link>
       </div>
-      <div>
+      <div v-if="route.path !== '/about'">
         <router-link to="/about">
           关于我
         </router-link>
