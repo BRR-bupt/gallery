@@ -32,14 +32,16 @@ const connetion = [
 ]
 
 onMounted(() => {
-  ScrollSmoother.create({
-    wrapper: '#wrapper',
-    content: '#content',
-    smooth: 2,
-    effects: true,
-    ignoreMobileResize: true,
-    // onUpdate: (self) => console.log("velocity:", self.getVelocity()),
-  })
+  if (window.screen.width > 800) {
+    ScrollSmoother.create({
+      wrapper: '#wrapper',
+      content: '#content',
+      smooth: 2,
+      effects: true,
+      ignoreMobileResize: true,
+    })
+  }
+
   const ellipseBigCircle = document.querySelector(
     '#big-circle ellipse',
   ) as SVGEllipseElement
@@ -156,37 +158,34 @@ onMounted(() => {
   // const skewSetter = gsap.quickTo('#grained', 'skewY')
   const clamp = gsap.utils.clamp(-6, 6)
 
-  if (window.screen.width > 800) {
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: '#connect',
-          start: 'top 75%',
-          end: 'top 75%',
-          toggleActions: 'play none none reverse',
-        },
-      })
-      .from('#connect-title', {
-        yPercent: 100,
-        duration: 1.4,
-        ease: 'power4.out',
-      })
-      .from('.connect-count', {
-        yPercent: 100,
-        duration: 1.4,
-        ease: 'power4.out',
-      }, '<')
-      .from('.connect-label', {
-        yPercent: 100,
-        duration: 1.4,
-        ease: 'power4.out',
-      }, '< 25%')
-      .from('.connect-value', {
-        yPercent: 100,
-        duration: 1.4,
-        ease: 'power4.out',
-      }, '<')
-  }
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: '#connect',
+        start: 'top 75%',
+        toggleActions: 'play none none reverse',
+      },
+    })
+    .from('#connect-title', {
+      yPercent: 100,
+      duration: 1.4,
+      ease: 'power4.out',
+    })
+    .from('.connect-count', {
+      yPercent: 100,
+      duration: 1.4,
+      ease: 'power4.out',
+    }, '<')
+    .from('.connect-label', {
+      yPercent: 100,
+      duration: 1.4,
+      ease: 'power4.out',
+    }, '< 25%')
+    .from('.connect-value', {
+      yPercent: 100,
+      duration: 1.4,
+      ease: 'power4.out',
+    }, '<')
 
   // gsap.set('#grained', {
   //   transformOrigin: 'center center',

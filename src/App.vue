@@ -136,7 +136,12 @@ const onLeave = (_el: Element, done: any) => {
       ease: 'power3',
       onComplete: () => {
         const Smooth = ScrollSmoother.get() as globalThis.ScrollSmoother
-        Smooth.scrollTop(0)
+        if (Smooth)
+          Smooth.scrollTop(0)
+
+        else
+          window.scrollTo({ top: 0 })
+
         done()
         // buttonBurger.classList.remove('is-hovered', 'is-open')
         // navbar.classList.replace('block', 'hidden')
