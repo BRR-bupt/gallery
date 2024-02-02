@@ -173,7 +173,7 @@ function gsapMove() {
             </div>
             <div id="album-list" class="text-2xl text-grey">
               <div
-                v-for="(item, index) in catalog" :key="index" class="overflow-hidden cursor-pointer hover:text-jet"
+                v-for="(item, index) in catalog" :key="index" class="overflow-hidden cursor-pointer hover:text-jet dark:hover:text-white"
                 @click="changeAlbum(item.en)"
               >
                 <div :class="item.en === activeAlbum ? 'activeAlbum' : ''">
@@ -231,5 +231,8 @@ function gsapMove() {
   font-weight: 700;
   font-size: 28px;
   color: black;
+}
+.dark .activeAlbum {
+  color: white;
 }
 </style>

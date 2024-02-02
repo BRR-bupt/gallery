@@ -102,4 +102,7 @@ onMounted(() => {
   height: 100%;
   fill: #d1d3e0;
 }
+.dark .svg1 {
+  fill: #fba77d;
+}
 </style>

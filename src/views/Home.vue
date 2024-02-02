@@ -318,7 +318,7 @@ function toGallery() {
             <div id="img-wrap" class="z-0 h-full w-full px-[10vw] py-[10vh] sm:px-[20vw]">
               <div
                 id="main-img"
-                class="m-auto h-full max-h-[853px] w-[63vw] max-w-[63vw] rounded-[8rem] bg-[url('~/assets/img/Hero_img_light.webp')] bg-cover bg-center bg-no-repeat transition-bg-img duration-500 ease-[ease] after:hidden after:content-[url('https://ik.imagekit.io/palladium../assets/img/Hero_img_light.webp')_url('https://ik.imagekit.io/palladium../assets/img/Hero_img_dark.webp')] dark:bg-[url('https://ik.imagekit.io/palladium../assets/img/Hero_img_dark.webp')] sm:max-h-full sm:w-full sm:max-w-[454px] lt:rounded-[11rem] av:rounded-full"
+                class="m-auto h-full max-h-[853px] w-[63vw] max-w-[63vw] rounded-[8rem] bg-[url('~/assets/img/Hero_img_light.webp')] bg-cover bg-center bg-no-repeat transition-bg-img duration-500 ease-[ease] after:hidden after:content-[url('~/assets/img/Hero_img_light.webp')_url('~/assets/img/Hero_img_dark.webp')] dark:bg-[url('~/assets/img/Hero_img_dark.webp')] sm:max-h-full sm:w-full sm:max-w-[454px] lt:rounded-[11rem] av:rounded-full"
               />
             </div>
             <div
