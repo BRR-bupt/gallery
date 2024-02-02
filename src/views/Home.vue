@@ -43,13 +43,16 @@ const refsubtitleHero = ref()
 const refcharAbout = ref()
 const refwordPortfolio = ref()
 onMounted(() => {
-  ScrollSmoother.create({
-    wrapper: '#wrapper',
-    content: '#content',
-    smooth: 2,
-    effects: true,
-    ignoreMobileResize: true,
-  })
+  if (window.screen.width > 800) {
+    ScrollSmoother.create({
+      wrapper: '#wrapper',
+      content: '#content',
+      smooth: 2,
+      effects: true,
+      ignoreMobileResize: true,
+    })
+  }
+
   const Smooth = ScrollSmoother.get() as globalThis.ScrollSmoother
   const buttonsToForm = document.querySelectorAll(
     '.to-form',
@@ -159,25 +162,33 @@ onMounted(() => {
       '<',
     )
 
-  gsap.to(Smooth, {
-    duration: 1,
-    scrollTop: Math.min(
-      ScrollTrigger.maxScroll(window),
-      Smooth.offset('#homesection', 'top top'),
-    ),
-    ease: 'power3.inOut',
-  })
+  // gsap.to(Smooth, {
+  //   duration: 1,
+  //   scrollTop: Math.min(
+  //     ScrollTrigger.maxScroll(window),
+  //     Smooth.offset('#homesection', 'top top'),
+  //   ),
+  //   ease: 'power3.inOut',
+  // })
 
   buttonsToForm.forEach((button) => {
     button.addEventListener('click', () => {
-      gsap.to(Smooth, {
-        duration: 3,
-        scrollTop: Math.min(
-          ScrollTrigger.maxScroll(window),
-          Smooth.offset('#connect', 'top top'),
-        ),
-        ease: 'power3.inOut',
-      })
+      if (Smooth) {
+        gsap.to(Smooth, {
+          duration: 3,
+          scrollTop: Math.min(
+            ScrollTrigger.maxScroll(window),
+            Smooth.offset('#connect', 'top top'),
+          ),
+          ease: 'power3.inOut',
+        })
+      }
+      else {
+        window.scrollTo({
+          top: 8000,
+          behavior: 'smooth',
+        })
+      }
     })
   })
 
