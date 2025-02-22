@@ -48,7 +48,7 @@ const url = import.meta.env.MODE === 'development' ? 'api/v1/files' : 'https://a
 //     }
 //   })
 //   console.log(list.value)
-//   isDataReady.isReady = true
+//   // isDataReady.isReady = true
 //   isData.data = list.value
 //   // changeAlbum(defaultAlbum)
 // })
