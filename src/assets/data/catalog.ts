@@ -4,6 +4,10 @@ const catalog = [
     en: 'quality',
   },
   {
+    zh: '人像',
+    en: 'portrait',
+  },
+  {
     zh: '漫展',
     en: 'cosplay',
   },

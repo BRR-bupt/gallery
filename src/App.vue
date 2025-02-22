@@ -8,7 +8,7 @@ import MyHeader from './components/MyHeader.vue'
 import Preload from './components/Preload.vue'
 import type { ImageInfo } from './store/piniaStore'
 import { dataStore, routeStore } from './store/piniaStore'
-import { all } from '~/assets/data/all'
+import { all } from '~/assets/data/test'
 const isRoute = routeStore()
 const isData = dataStore()
 
