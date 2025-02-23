@@ -53,7 +53,7 @@ const url = import.meta.env.MODE === 'development' ? 'api/v1/files' : 'https://a
 //   // changeAlbum(defaultAlbum)
 // })
 
-all.forEach((el: ImageInfo & { tags: null | string[] } & any) => {
+all.reverse().forEach((el: ImageInfo & { tags: null | string[] } & any) => {
   if (el.tags && el.tags.includes('trans')) {
     const temp = el.height
     el.height = el.width
