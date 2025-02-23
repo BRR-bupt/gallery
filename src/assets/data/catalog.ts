@@ -1,11 +1,11 @@
 const catalog = [
   {
-    zh: '精选',
-    en: 'quality',
-  },
-  {
     zh: '人像',
     en: 'portrait',
+  },
+  {
+    zh: '精选',
+    en: 'quality',
   },
   {
     zh: '漫展',

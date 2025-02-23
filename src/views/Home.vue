@@ -437,8 +437,8 @@ const width = window.screen.width
             >
               <!-- Paysage/Mariage/Paysage/Mariage/
               Paysage/Mariage/ -->
-              <div class="overflow-hidden">精选&nbsp;/&nbsp;自然&nbsp;/&nbsp;城市</div>
-              <div class="overflow-hidden">/&nbsp;漫展&nbsp;/&nbsp;其他</div>
+              <div class="overflow-hidden">人像&nbsp;/&nbsp;精选&nbsp;/&nbsp;自然</div>
+              <div class="overflow-hidden">/&nbsp;漫展&nbsp;/&nbsp;城市</div>
               <!-- Paysage / Mariage /
               Portrait / Nature / Architecture /
               Astrophotographie -->
