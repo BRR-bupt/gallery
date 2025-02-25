@@ -1,5 +1,9 @@
 const catalog = [
   {
+    zh: '爱',
+    en: 'dearest',
+  },
+  {
     zh: '人像',
     en: 'portrait',
   },
@@ -18,10 +22,6 @@ const catalog = [
   {
     zh: '自然',
     en: 'nature',
-  },
-  {
-    zh: '其他',
-    en: 'others',
   },
 ]
 export { catalog }

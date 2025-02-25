@@ -8,7 +8,7 @@ import { catalog } from '~/assets/data/catalog'
 const isRoute = routeStore()
 const isData = dataStore()
 
-const defaultAlbum = 'portrait'
+const defaultAlbum = 'dearest'
 const activeAlbum = ref('')
 const imageNumber = ref(20)
 const maxImageNumber = ref(100)
