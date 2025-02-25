@@ -462,7 +462,7 @@ const width = window.screen.width
             <img src="../assets/img/5.webp" class="img-unit">
           </div>
           <div class="carousel-cell img-h col-start-1 col-end-12 mt-[5vw] sm:col-end-8">
-            <img src="../assets/img/2.webp" class="img-unit">
+            <img src="../assets/img/1.webp" class="img-unit">
           </div>
           <div class="carousel-cell img-v z-[1] col-start-1 col-end-12 mt-[5vw] sm:col-start-7 sm:mt-[-2vw]">
             <img src="../assets/img/3.webp" class="img-unit">
@@ -471,7 +471,7 @@ const width = window.screen.width
             <img src="../assets/img/10.webp" class="img-unit">
           </div>
           <div class="carousel-cell img-h col-start-1 col-end-12 mt-[5vw] sm:col-start-5 sm:mt-[-15vw]">
-            <img src="../assets/img/1.webp" class="img-unit">
+            <img src="../assets/img/2.webp" class="img-unit">
           </div>
           <div class="carousel-cell img-h col-start-1 col-end-12 mt-[5vw] sm:col-start-5 sm:mt-[10vw]">
             <img src="../assets/img/8.webp" class="img-unit">

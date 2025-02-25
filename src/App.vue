@@ -53,6 +53,10 @@ const url = import.meta.env.MODE === 'development' ? 'api/v1/files' : 'https://a
 //   // changeAlbum(defaultAlbum)
 // })
 
+function removeUpdatedAt(url: string) {
+  return url.replace(/\?updatedAt=\d+/, '')
+}
+
 all.reverse().forEach((el: ImageInfo & { tags: null | string[] } & any) => {
   if (el.tags && el.tags.includes('trans')) {
     const temp = el.height
@@ -68,7 +72,7 @@ all.reverse().forEach((el: ImageInfo & { tags: null | string[] } & any) => {
       height: el.height,
       width: el.width,
       url: el.url,
-      fixUrl: `${el.url}?tr=w-720,h-${720 * el.height / el.width}`,
+      fixUrl: removeUpdatedAt(`${el.url}?tr=w-720,h-${720 * el.height / el.width}`),
     }
     let find = false
     list.value.forEach((list) => {
